@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Üretilen içerikler — büyük dosyalar, NotebookLM'den yeniden indirilebilir
+ciktilar/*
+!ciktilar/.gitkeep
+
+# ---------------------------------------------------------------
+# KAYNAK PDF'LER
+# Depo şu an PUBLIC. Kaynaklar kurumsal EBB dokümanları olduğu için
+# varsayılan olarak depoya DAHİL EDİLMEZ.
+# Depo private yapıldıktan sonra aşağıdaki satır silinerek kaynaklar
+# depoya dahil edilebilir (arkadaşının aynı kaynaklarla çalışması için).
+# ---------------------------------------------------------------
+kaynaklar/*.pdf

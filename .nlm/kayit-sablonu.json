@@ -1,0 +1,13 @@
+{
+  "alias": "ornek-proje",
+  "notebook_id": "df3bf6c8-0000-0000-0000-000000000000",
+  "baslik": "Ornek Proje Sunumu",
+  "olusturuldu": "2026-08-26",
+  "kaynaklar": [
+    { "yerel": "kaynaklar/rapor.pdf", "source_id": "...", "eklendi": "2026-08-26" }
+  ],
+  "uretilenler": [
+    { "tip": "video", "format": "explainer", "yerel": "ciktilar/ornek-proje/video.mp4", "tarih": "2026-08-26" }
+  ],
+  "notlar": ""
+}
