@@ -131,12 +131,30 @@ def yaz(sayfa, metin, x, y, boyut, renk=(0, 0, 0), kalin=False, genislik=None,
     return boyut
 
 
+_LOGO_PNG = os.path.join(CIKTI_DIZIN, "_ebb-logo-raster.png")
+
+
+def logo_rasterle():
+    """EBB logosunu yüksek çözünürlüklü PNG'ye çevirir.
+
+    NEDEN: show_pdf_page ile basılan logo PDF içinde VEKTÖR çizim olarak durur.
+    NotebookLM kaynak belgeden görsel çıkarırken yalnızca gömülü RASTER görselleri
+    görür; vektör logoyu göremediği için yerine kendi uydurduğu logoyu koyar.
+    Bu yüzden logo raster PNG olarak gömülür.
+    """
+    if os.path.exists(_LOGO_PNG):
+        return _LOGO_PNG
+    with pymupdf.open(LOGO) as lg:
+        # 566pt kenar → ~1600 piksel
+        lg[0].get_pixmap(dpi=205).save(_LOGO_PNG)
+    return _LOGO_PNG
+
+
 def logo_bas(sayfa, hedef):
-    """EBB logosunu vektör olarak verilen dikdörtgene basar."""
+    """EBB logosunu RASTER görsel olarak verilen dikdörtgene basar."""
     if not os.path.exists(LOGO):
         return
-    with pymupdf.open(LOGO) as lg:
-        sayfa.show_pdf_page(hedef, lg, 0)
+    sayfa.insert_image(hedef, filename=logo_rasterle())
 
 
 def kapak_olustur(doc):
@@ -169,6 +187,38 @@ def kapak_olustur(doc):
         60, A4_H - 70, 12, LACIVERT, kalin=True, hiza=1)
     yaz(s, "Tüm projeler öz kaynaklarımızla, kendi personelimiz tarafından geliştirilmiştir.",
         60, A4_H - 48, 9.5, GRI, hiza=1)
+    return s
+
+
+def kimlik_sayfasi_olustur(doc):
+    """Kurumsal kimlik sayfası — logoyu büyük ve tek başına raster görsel olarak verir.
+
+    NotebookLM'in logoyu net biçimde 'görsel varlık' olarak alması içindir.
+    """
+    s = doc.new_page(width=A4_W, height=A4_H)
+    font_ekle(s)
+
+    s.draw_rect(pymupdf.Rect(0, 0, A4_W, 74), color=None, fill=LACIVERT)
+    yaz(s, "KURUMSAL KİMLİK", 48, 26, 16, BEYAZ, kalin=True)
+    yaz(s, "Videoda kullanılacak resmî kurum logosu ve unvanlar", 48, 48, 9.5,
+        (0.82, 0.87, 0.93))
+
+    # Logo — büyük, tek başına, beyaz zeminde
+    logo_bas(s, pymupdf.Rect(A4_W / 2 - 150, 130, A4_W / 2 + 150, 430))
+
+    s.draw_line(pymupdf.Point(A4_W / 2 - 130, 470), pymupdf.Point(A4_W / 2 + 130, 470),
+                color=LACIVERT, width=1.4)
+
+    yaz(s, "Erzurum Büyükşehir Belediyesi resmî logosu", 60, 490, 10, GRI, hiza=1)
+
+    yaz(s, "T.C.", 60, 540, 11, GRI, kalin=True, hiza=1)
+    yaz(s, "ERZURUM BÜYÜKŞEHİR BELEDİYESİ", 60, 558, 16, LACIVERT, kalin=True, hiza=1)
+    yaz(s, "BİLGİ İŞLEM DAİRE BAŞKANLIĞI", 60, 584, 13, LACIVERT, kalin=True, hiza=1)
+    yaz(s, "AKILLI ŞEHİRLER ŞUBE MÜDÜRLÜĞÜ", 60, 604, 13, LACIVERT, kalin=True, hiza=1)
+
+    yaz(s, "Videonun açılış ve kapanış kartlarında bu logo ve bu unvanlar kullanılır. "
+           "Başka bir logo, arma veya amblem üretilmez.",
+        80, 646, 10, (0.25, 0.27, 0.30), genislik=A4_W - 160, hiza=1)
     return s
 
 
@@ -269,8 +319,9 @@ def main():
     doc = pymupdf.open()
 
     kapak_olustur(doc)
+    kimlik_sayfasi_olustur(doc)
     icindekiler_olustur(doc)
-    print("✓ kapak + içindekiler")
+    print("✓ kapak + kurumsal kimlik + içindekiler")
 
     for i, (dosya, baslik, ozet) in enumerate(PROJELER, start=1):
         kaynak_yolu = os.path.join(KAYNAK, dosya)
