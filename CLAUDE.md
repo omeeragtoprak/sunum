@@ -1,6 +1,6 @@
 # Claude Code Çalışma Protokolü — EBB Proje Tanıtım Sunumu
 
-Bu depo, Erzurum Büyükşehir Belediyesi **Bilgi İşlem Daire Başkanlığı** projelerinin
+Bu depo, Erzurum Büyükşehir Belediyesi **Bilgi İşlem Daire Başkanlığı Akıllı Şehirler Şube Müdürlüğü** projelerinin
 tek bir kurumsal tanıtım sunumuna dönüştürülmesi içindir.
 Üretim aracı: Gemini Notebook (NotebookLM) MCP — `nlm` CLI / `gemini-notebook-mcp`.
 
@@ -8,14 +8,18 @@ Kurulum ve komut referansı için `README.md`'ye bak.
 
 ---
 
-## 🚦 DURUM: Kaynak toplama aşaması
+## 🚦 DURUM: Üretim başladı (2026-08-28)
 
-**Kullanıcı aksini söyleyene kadar hiçbir üretim komutu çalıştırma.**
-(`nlm video create`, `nlm slides create`, `nlm audio create`, `nlm report create`,
-`nlm infographic create` — hepsi beklemede.)
+Kaynaklar tamamlandı ve yüklendi. Aktif notebook:
 
-Kaynak PDF'ler hâlâ ekleniyor. Kullanıcı "kaynaklar tamam" dediğinde üretime geçilir.
-Bu bölüm o zaman güncellenmelidir.
+| | |
+|---|---|
+| Takma ad | `ebb-sunum` |
+| Notebook ID | `1b4b5c43-e387-48a5-98b9-bb55abafdabb` |
+| Kaynak | 12 PDF (hepsi *ready*) |
+| Üretimde | Video (explainer · classic · tr) — `381e6997-e301-4f25-8648-c61e2c51c332` |
+
+Yeni notebook oluşturma, PDF'leri tekrar yükleme. `.nlm/index.json` güncel kaydı tutar.
 
 ---
 
@@ -35,10 +39,10 @@ sesli özet, infografik.
 |---|---|
 | Dil | **Türkçe** — her komuta `--language tr` |
 | Ton | **Resmî kurum dili** |
-| Ağız | Birinci çoğul şahıs: *"Bilgi İşlem Daire Başkanlığı olarak…"* |
+| Ağız | Birinci çoğul şahıs: *"Bilgi İşlem Daire Başkanlığı Akıllı Şehirler Şube Müdürlüğü olarak…"* |
 
 **Doğru:**
-> "Bilgi İşlem Daire Başkanlığı olarak, kentimizin dijital dönüşümü kapsamında
+> "Bilgi İşlem Daire Başkanlığı Akıllı Şehirler Şube Müdürlüğü olarak, kentimizin dijital dönüşümü kapsamında
 > geliştirdiğimiz Akıllı Otopark Yönetim Sistemi, plaka tanıma teknolojisi ile
 > otopark kapasitesinin gerçek zamanlı takibini sağlamaktadır."
 
@@ -75,7 +79,7 @@ for f in kaynaklar/*.pdf; do nlm source add ebb-sunum --file "$f" --wait; done
 
 # 3) Üret — resmî ton yönlendirmesi ile
 nlm video create ebb-sunum --format explainer --language tr --style classic \
-    --focus "Bilgi İşlem Daire Başkanlığı olarak geliştirdiğimiz projelerin resmî kurumsal tanıtımı; birinci çoğul şahıs, resmî kurum dili" -y
+    --focus "Bilgi İşlem Daire Başkanlığı Akıllı Şehirler Şube Müdürlüğü olarak geliştirdiğimiz projelerin resmî kurumsal tanıtımı; birinci çoğul şahıs, resmî kurum dili" -y
 nlm slides create ebb-sunum --language tr -y
 nlm report create ebb-sunum --language tr -y
 nlm audio create  ebb-sunum --language tr -y

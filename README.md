@@ -1,6 +1,6 @@
-# EBB Bilgi İşlem Daire Başkanlığı — Proje Tanıtım Sunumu Üretimi
+# EBB Bilgi İşlem Daire Başkanlığı · Akıllı Şehirler Şube Müdürlüğü — Proje Tanıtım Sunumu Üretimi
 
-Erzurum Büyükşehir Belediyesi Bilgi İşlem Daire Başkanlığı bünyesinde geliştirilen
+Erzurum Büyükşehir Belediyesi Bilgi İşlem Daire Başkanlığı, Akıllı Şehirler Şube Müdürlüğü bünyesinde geliştirilen
 yazılım projelerinin **tek bir kurumsal tanıtım sunumu** hâline getirilmesi için
 kurulmuş çalışma alanı.
 
@@ -19,12 +19,12 @@ Tüm projeler **ayrı ayrı değil, tek bir bütünleşik sunumda** anlatılacak
 |---|---|
 | **Dil** | Kesinlikle **Türkçe** (`--language tr`) |
 | **Ton** | Resmî kurum dili |
-| **Anlatıcı ağzı** | Birinci çoğul şahıs — *"Bilgi İşlem Daire Başkanlığı olarak geliştirdiğimiz…"* |
+| **Anlatıcı ağzı** | Birinci çoğul şahıs — *"Bilgi İşlem Daire Başkanlığı Akıllı Şehirler Şube Müdürlüğü olarak geliştirdiğimiz…"* |
 | **Kapsam** | `kaynaklar/` altındaki tüm projeler tek sunumda |
 | **Biçimler** | NotebookLM'in tüm imkânları: video + slayt + rapor + sesli özet + infografik |
 
 **Ton örneği:**
-> "Bilgi İşlem Daire Başkanlığı olarak, kentimizin dijital dönüşümü kapsamında
+> "Bilgi İşlem Daire Başkanlığı Akıllı Şehirler Şube Müdürlüğü olarak, kentimizin dijital dönüşümü kapsamında
 > geliştirdiğimiz Akıllı Otopark Yönetim Sistemi, plaka tanıma teknolojisi ile
 > otopark kapasitesinin gerçek zamanlı takibini sağlamaktadır."
 
@@ -150,7 +150,7 @@ done
 
 ```bash
 nlm video create  ebb-sunum --format explainer --language tr \
-    --focus "Bilgi İşlem Daire Başkanlığı olarak geliştirdiğimiz projelerin resmî kurumsal tanıtımı" -y
+    --focus "Bilgi İşlem Daire Başkanlığı Akıllı Şehirler Şube Müdürlüğü olarak geliştirdiğimiz projelerin resmî kurumsal tanıtımı" -y
 nlm slides create      ebb-sunum --language tr -y
 nlm report create      ebb-sunum --language tr -y
 nlm audio create       ebb-sunum --language tr -y

@@ -1,4 +1,29 @@
 {
   "aciklama": "Yerel PDF/kaynak dosyalari <-> NotebookLM notebook eslesmesi. Claude bu dosyayi okur/gunceller.",
-  "notebooklar": []
+  "notebooklar": [
+    {
+      "alias": "ebb-sunum",
+      "notebook_id": "1b4b5c43-e387-48a5-98b9-bb55abafdabb",
+      "baslik": "EBB Akıllı Şehirler Şube Müdürlüğü — Proje Tanıtımı 2026",
+      "url": "https://notebooklm.google.com/notebook/1b4b5c43-e387-48a5-98b9-bb55abafdabb",
+      "olusturuldu": "2026-08-28",
+      "amac": "12 projenin tek butunlesik kurumsal tanitim sunumu",
+      "kaynaklar": [
+        "kaynaklar/AYKOME-Kazi-Ruhsat-Yonetici-Ozeti.pdf",
+        "kaynaklar/BPBS_Kim_Kimdir_Yonetici_Ozeti.pdf",
+        "kaynaklar/BozukYolTespit_Tanitim.pdf",
+        "kaynaklar/EBB_AI_Emlak_Istimlak_Yonetim_Ozeti.pdf",
+        "kaynaklar/Ertansa-Ariza-Takip-Tanitim.pdf",
+        "kaynaklar/Imar_Planlama_ve_Takip_Sistemi.pdf",
+        "kaynaklar/Kasap-Et-Takip-Sistemi-Tanitim.pdf",
+        "kaynaklar/OTOPARK SUNUM (1).pdf",
+        "kaynaklar/TYS_Tanitim.pdf",
+        "kaynaklar/Ticari_Arac_Tescil_Sistemi_Yonetici_Ozeti.pdf",
+        "kaynaklar/erisim-kontrol-rapor.pdf",
+        "kaynaklar/uydupro-tanitim.pdf"
+      ],
+      "uretilenler": [],
+      "notlar": "Kaynaklar 2026-08-28 tarihinde yuklendi. Kurum agzi: Bilgi Islem Daire Baskanligi Akilli Sehirler Sube Mudurlugu."
+    }
+  ]
 }
