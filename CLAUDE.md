@@ -8,12 +8,22 @@ Kurulum ve komut referansı için `README.md`'ye bak.
 
 ---
 
-## 🚦 DURUM: Üretim başladı (2026-08-28)
-
-Kaynaklar tamamlandı ve yüklendi. Aktif notebook:
+## 🚦 DURUM: Video üretildi ✅ (2026-08-28)
 
 | | |
 |---|---|
+| Takma ad | `ebb-sunum` |
+| Notebook ID | `1b4b5c43-e387-48a5-98b9-bb55abafdabb` |
+| Kaynak | 12 PDF (hepsi *ready*) |
+| **Video** | ✅ `ciktilar/ebb-sunum/EBB-Akilli-Sehirler-Proje-Tanitimi-2026.mp4` — 9dk09sn · 720p · TR · doğrulandı |
+| Üretilmemiş | Slayt sunusu, rapor, sesli özet, infografik |
+
+Yeni notebook oluşturma, PDF'leri tekrar yükleme. `.nlm/index.json` güncel kaydı tutar.
+
+**İndirme uyarısı:** `nlm download video/slide-deck` bozuk (bkz. README sorun giderme).
+Artifact indirmek için **`python araclar/artifact-indir.py <nb-id> <artifact-id> <tip> <çıktı>`** kullan.
+
+---|---|
 | Takma ad | `ebb-sunum` |
 | Notebook ID | `1b4b5c43-e387-48a5-98b9-bb55abafdabb` |
 | Kaynak | 12 PDF (hepsi *ready*) |

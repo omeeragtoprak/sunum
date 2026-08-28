@@ -109,6 +109,7 @@ nlm notebook list # hesabındaki notebook'lar listelenmeli
 sunum/
 ├── README.md          # bu dosya
 ├── CLAUDE.md          # Claude Code çalışma protokolü (otomatik okunur)
+├── araclar/           # yardımcı betikler (CLI hatalarını atlayan indirici)
 ├── kaynaklar/         # girdi PDF'leri
 ├── ciktilar/          # indirilen üretimler
 └── .nlm/
@@ -196,7 +197,11 @@ tarif önerilir; `kawaii`/`anime` gibi stiller resmî sunum için uygun değildi
 | `nlm doctor` → çerez "stale" | `nlm login` tekrarla |
 | Üretim boş/eksik içerik | Kaynak işlenmeden üretim istenmiş. `nlm source add … --wait` kullan |
 | Komut aniden bozuldu | Dahili API değişmiş olabilir: `uv tool upgrade notebooklm-mcp-cli` |
-| Günlük kota doldu | Ücretsiz katmanda ~50 sorgu/gün. İşi güne yay |
+| `nlm download video/slide-deck` → `Error: Download failed for <tip>` | **CLI hatası — video/slayt indirme hiç çalışmıyor.** `downloads.py:549` `status != "completed"` diye eler, ama API `status` döndürmediği için değer hep `unknown` kalır. Çözüm: **`python araclar/artifact-indir.py <notebook-id> <artifact-id> <tip> <çıktı>`** |
+| `download_async(wait=True)` beklemeden hata veriyor | Yeniden deneme yalnızca `debug_code == "artifact_not_ready"` iken devreye giriyor, fakat `_download_once_async` hatayı bu kodu koymadan sarmalıyor. `araclar/artifact-indir.py` kendi bekleme döngüsünü kullanır |
+| Günlük kota doldu | Ücretsiz katmanda ~50 sorgu/gün (Pro hesapta geçerli değil). İşi güne yay |
+| `nlm list artifacts` → `TypeError: '<=' not supported between instances of 'int' and 'OptionInfo'` | CLI hatası (v0.9.14, Typer parametre aktarımı). Bunun yerine **`nlm studio status <notebook>`** kullan |
+| `nlm studio status` → `status: unknown` | Bu alan güvenilir değil, sabit "unknown" dönebilir. Üretimin bittiğini **`--full` çıktısındaki `video_url` / `slide_deck_url` alanının dolmasından** anla |
 
 ---
 
