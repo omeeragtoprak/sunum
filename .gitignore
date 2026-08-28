@@ -13,3 +13,8 @@ ciktilar/*
 # depoya dahil edilebilir (arkadaşının aynı kaynaklarla çalışması için).
 # ---------------------------------------------------------------
 kaynaklar/*.pdf
+
+# Yerel video üretimi ara dosyaları (kareler, sesler, çıkarılan görseller)
+araclar/video-yerel/uretim/
+# Birleştirilmiş master PDF (kaynaklardan yeniden üretilir)
+kaynaklar/master/
